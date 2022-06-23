@@ -15,7 +15,7 @@ public class Program
            //Dodawanie
             Console.WriteLine("Dodaj nowego klienta");
 
-            db.Add(new Klienci { Imie="Kamil",Nazwisko="Krech",PESEL="123456789",Email="lubieplacki@gmail.com", Telefon="213769420" });
+            db.Add(new KlienciC { Imie="Kamil",Nazwisko="Krech",PESEL="123456789",Email="lubieplacki@gmail.com", Telefon="213769420" });
             db.SaveChanges();
            
            

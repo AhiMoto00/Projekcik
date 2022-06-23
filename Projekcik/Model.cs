@@ -1,10 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 public class WypozyczalniaContext : DbContext
 {
-    public DbSet<Klienci> Klient{ get; set; }
-    public DbSet<Pracownicy> Pracownik { get; set; }
+    public DbSet<KlienciC> Klienci{ get; set; }
+    public DbSet<PracownicyC> Pracownicy { get; set; }
+    public DbSet<ButyC> Buty  { get; set; }
+    public DbSet<KaskiC> Kaski { get; set; }
+    public DbSet<KijkiC> Kijki  { get; set; }
+    public DbSet<NartyC>  Narty{ get; set; }
+    public DbSet<WypożyczoneC> Wypożyczone { get; set; }
+    public DbSet<ZestawC> Zestaw { get; set; }
+    public DbSet<StatusyC> Statusy  { get; set; }
+
 
     public string ConnectionString { get; }
 
@@ -19,7 +28,8 @@ public class WypozyczalniaContext : DbContext
     }
 }
 
-public class Klienci
+
+public class KlienciC
 {
     public int Id { get; set; }
     public string Imie { get; set; }
@@ -27,15 +37,75 @@ public class Klienci
     public string PESEL { get; set; }
     public string Email { get; set; }
     public string Telefon { get; set; }
-
 }
 
-public class Pracownicy
+public class PracownicyC
 {
     public int Id { get; set; }
     public string Imie { get; set; }
     public string Nazwisko { get; set; }
     public string Telefon { get; set; }
-
 }
-   
+
+public class ButyC
+{
+    public int Id { get; set; }
+    public string Nazwa { get; set; }
+    public int Rozmiar { get; set; }
+    public int StatusID { get; set; }
+    public decimal Cena { get; set; }
+}
+
+public class KaskiC
+{
+    public int Id { get; set; }
+    public string Nazwa { get; set; }
+    public string Rozmiar { get; set; }
+    public int StatusID { get; set; }
+    public decimal Cena { get; set; }
+}
+
+public class KijkiC
+{
+    public int Id { get; set; }
+    public string Nazwa { get; set; }
+    public int Długość { get; set; }
+    public int StatusID { get; set; }
+    public decimal Cena { get; set; }
+}
+
+public class NartyC
+{
+    public int Id { get; set; }
+    public string Nazwa { get; set; }
+    public int Długość { get; set; }
+    public int StatusID { get; set; }
+    public decimal Cena { get; set; }
+}
+
+public class StatusyC
+{
+    public int Id { get; set; }
+    public string Nazwa { get; set; }
+}
+
+public class WypożyczoneC
+{
+    public int Id { get; set; }
+    public int KlienicID { get; set; }
+    public int ZestawID { get; set; }
+    public DateTime Wypożyczenia { get; set; }
+    public DateTime DataOddania { get; set; }
+    public int PracownikID { get; set; }
+    public decimal KworaDoZapłaty { get; set; }
+}
+
+public class ZestawC
+{
+    public int Id { get; set; }
+    public int NartyID { get; set; }
+    public int ButyID { get; set; }
+    public int KaskiID { get; set; }
+    public int KijkiID { get; set; }    
+    public decimal CenaZestawu { get; set; }
+}
